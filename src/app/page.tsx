@@ -1,4 +1,3 @@
-"use client"
 import Hero from "@/components/Hero";
 import Product from "@/components/Product";
 import { ProductType } from "@/interfaces";
