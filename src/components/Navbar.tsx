@@ -14,12 +14,14 @@ export const Navbar = () => {
         <Link href={"/products"} className="mr-5 hover:text-gray-900 font-semibold">All products</Link>
       </nav>
       <div className='flex items-center space-x-2.5 text-sm'>
-        <button className='button bg-blue-600 text-white border-blue-600  hover:bg-transparent hover:text-black'>
-          Sign up
-        </button>
-        <button className='button bg-transparent text-black border-blue-600  hover:bg-blue-600 hover:border-transparen hover:text-white'>
+        <Link href={"/shopping-cart"}>
+          <button className='button bg-blue-600 text-white border-blue-600  hover:bg-transparent hover:text-black'>
+            My Bag
+          </button>
+        </Link>
+        {/* <button className='button bg-transparent text-black border-blue-600  hover:bg-blue-600 hover:border-transparen hover:text-white'>
           My Bag
-        </button>
+        </button> */}
       </div>
     </header>
   )

@@ -20,7 +20,27 @@ const ProductDetailPage = () => {
     const close = () => {
         setIsOpen(false);
         router.back()
-    }
+    };
+    const handleClick = () => {
+        const products: ProductType[] = JSON.parse(localStorage.getItem('carts') as string) || [];
+
+        const isExistProduct = products.find(c => c.id === product?.id);
+
+        if (isExistProduct) {
+            const updatedData = products.map(c => {
+                if (c.id == product?.id) {
+                    return {
+                        ...c,
+                        quantity: c.quantity + 1
+                    }
+                }
+                return c
+            })
+        } else {
+            const data = [...products, product];
+            localStorage.setItem('carts', JSON.stringify(data));
+        }
+    };
 
     useEffect(() => {
         async function getData() {
@@ -73,28 +93,28 @@ const ProductDetailPage = () => {
                                             {product?.rating.rate && (
                                                 <div className='flex items-center ml-2 mr-6'>
                                                     {Array.from(
-														{
-															length: Math.floor(product.rating.rate),
-														},
-														(_, i) => (
-															<StarIcon
-																key={i}
-																className='h-4 w-4 text-yellow-500'
-															/>
-														)
-													)}
-													{Array.from(
-														{
-															length:
-																5 - Math.floor(product.rating.rate),
-														},
-														(_, i) => (
-															<StarIconOutline
-																key={i}
-																className='h-4 w-4 text-yellow-500'
-															/>
-														)
-													)}
+                                                        {
+                                                            length: Math.floor(product.rating.rate),
+                                                        },
+                                                        (_, i) => (
+                                                            <StarIcon
+                                                                key={i}
+                                                                className='h-4 w-4 text-yellow-500'
+                                                            />
+                                                        )
+                                                    )}
+                                                    {Array.from(
+                                                        {
+                                                            length:
+                                                                5 - Math.floor(product.rating.rate),
+                                                        },
+                                                        (_, i) => (
+                                                            <StarIconOutline
+                                                                key={i}
+                                                                className='h-4 w-4 text-yellow-500'
+                                                            />
+                                                        )
+                                                    )}
                                                     {/* <ReactStars
                                                         value={product.rating.rate}
                                                         edit={false}
@@ -111,7 +131,7 @@ const ProductDetailPage = () => {
                                     </div>
 
                                     <div className='space-y-3 text-sm'>
-                                        <button className='button w-full bg-blue-600 text-white border-transparent hover:border-blue-600 hover:bg-transparent hover:text-black'>
+                                        <button className='button w-full bg-blue-600 text-white border-transparent hover:border-blue-600 hover:bg-transparent hover:text-black' onClick={handleClick}>
                                             Add to bag
                                         </button>
                                         <button
