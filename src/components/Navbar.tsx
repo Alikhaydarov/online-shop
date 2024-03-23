@@ -11,6 +11,7 @@ export const Navbar = () => {
       </Link>
       <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
         <Link href={"/"} className="mr-5 hover:text-gray-900 font-semibold">Home page</Link>
+        <Link href={"/contact"} className="mr-5 hover:text-gray-900 font-semibold">Contact</Link>
         <Link href={"/products"} className="mr-5 hover:text-gray-900 font-semibold">All products</Link>
       </nav>
       <div className='flex items-center space-x-2.5 text-sm'>
