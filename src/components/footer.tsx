@@ -1,15 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image';
 
 const Footer = () => {
     return (
         <footer className="text-gray-600 body-font">
             <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <Link href={"/"}>
-                    <img src="https://mrit.uz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.b5c244a9.png&w=384&q=75"
-                        alt="logo"
-                        width={150}
-                        height={40} />
+                    <Image src={"https://mrit.uz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.b5c244a9.png&w=384&q=75"} alt='image' width={150} height={40} />
                 </Link>
                 <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2024 UPT -
                     <a href="https://UPTUZ.COM" className="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@UPTUZ.COM</a>

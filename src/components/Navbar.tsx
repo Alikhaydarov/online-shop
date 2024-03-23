@@ -1,13 +1,11 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 export const Navbar = () => {
   return (
     <header className="flex items-center px-4 md:px-12 py-2 justify-between fixed top-0 w-full z-50 shadow bg-white">
       <Link href={"/"}>
-        <img src="https://mrit.uz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.b5c244a9.png&w=384&q=75"
-          alt="logo"
-          width={150}
-          height={40} />
+        <Image src={"https://mrit.uz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.b5c244a9.png&w=384&q=75"} alt='image' width={150} height={40} />
       </Link>
       <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
         <Link href={"/"} className="mr-5 hover:text-gray-900 font-semibold">Home page</Link>
