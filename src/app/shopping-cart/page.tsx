@@ -5,7 +5,6 @@ import { StarIcon as StarIconOutline } from '@heroicons/react/24/outline';
 import { StarIcon } from '@heroicons/react/24/solid';
 import CustomImage from '@/components/images';
 import Link from "next/link"
-import { log } from 'console';
 const ShoppingCart = () => {
     const [total, setTotal] = useState<number>(0);
 
