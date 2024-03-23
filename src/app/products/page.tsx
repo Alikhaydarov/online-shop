@@ -18,7 +18,7 @@ const ProductPage = async () => {
                     ))}
                 </div>
             </section>
-            <Cta/>
+            <Cta />
         </main>
     )
 }

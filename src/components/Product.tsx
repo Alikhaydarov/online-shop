@@ -6,7 +6,6 @@ import React, { FC } from 'react'
 import CustomImage from './images';
 
 const Product: FC<{ product: ProductType }> = ({ product }) => {
-    console.log(product)
     return (
         <Link href={`/product/${product.id}`} className="h-96 p-6 flex flex-col rounded-lg group hover:scale-105 transition-transform ease-out duration-200 cursor-pointer border">
             <div className='relative max-h-80 flex-1'>

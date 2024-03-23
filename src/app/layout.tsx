@@ -10,23 +10,23 @@ import Footer from "@/components/footer";
 const montserrat = Montserrat({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Online-Shop",
-  description: "nextjs typescript tailwind css",
+	title: "Online-Shop",
+	description: "nextjs typescript tailwind css",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
+	return (
 		<html lang='en'>
 			<body className={montserrat.className}>
 				<Navbar />
 				<ToastContainer />
 				{children}
-				<Footer/>
+				<Footer />
 			</body>
 		</html>
-  );
+	);
 }
