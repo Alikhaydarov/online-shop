@@ -1,5 +1,4 @@
 'use client';
-
 import CustomImage from '@/components/images';
 import { ProductType } from '@/interfaces';
 import { StarIcon as StarIconOutline } from '@heroicons/react/24/outline';
@@ -9,13 +8,18 @@ import { useEffect, useState } from 'react';
 
 const ShoppingCart = () => {
     const [total, setTotal] = useState<number>(0);
-    const [products, setProducts] = useState<ProductType[]>(
-        JSON.parse(localStorage.getItem('carts') as string) || []
-    );
+    const [products, setProducts] = useState<ProductType[]>([]);
+
+    useEffect(() => {
+        const productLocalStorage = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem('carts') as string) : [];
+        setProducts(productLocalStorage);
+    }, []);
 
     const removeProduct = (id: number) => {
         const updatedCart = products.filter(product => product.id !== id);
-        localStorage.setItem('carts', JSON.stringify(updatedCart));
+        if (typeof window !== 'undefined') {
+            window.localStorage.setItem('carts', JSON.stringify(updatedCart));
+        }
         setProducts(updatedCart);
     };
 
@@ -27,11 +31,11 @@ const ShoppingCart = () => {
                     quantity: product.quantity + 1,
                 };
             }
-
             return product;
         });
-
-        localStorage.setItem('carts', JSON.stringify(updatedCart));
+        if (typeof window !== 'undefined') {
+            window.localStorage.setItem('carts', JSON.stringify(updatedCart));
+        }
         setProducts(updatedCart);
     };
 
@@ -48,11 +52,11 @@ const ShoppingCart = () => {
                         quantity: product.quantity - 1,
                     };
                 }
-
                 return product;
             });
-
-            localStorage.setItem('carts', JSON.stringify(updatedCart));
+            if (typeof window !== 'undefined') {
+                window.localStorage.setItem('carts', JSON.stringify(updatedCart));
+            }
             setProducts(updatedCart);
         }
     };
@@ -61,7 +65,6 @@ const ShoppingCart = () => {
         const total = products.reduce((acc, item) => {
             return acc + item.price * item.quantity;
         }, 0);
-
         setTotal(total);
     }, [products]);
 

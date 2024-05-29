@@ -23,8 +23,7 @@ const ProductDetailPage = () => {
         router.back()
     };
     const handleClick = () => {
-        const products: ProductType[] =
-            JSON.parse(localStorage.getItem('carts') as string) || [];
+        let products: ProductType[] = typeof window != undefined ? JSON.parse(window.localStorage.getItem('carts') as string) : []
 
         const isExistProduct = products.find(c => c.id === product?.id);
 
@@ -39,11 +38,14 @@ const ProductDetailPage = () => {
 
                 return c;
             });
-
-            localStorage.setItem('carts', JSON.stringify(updatedData));
+            if (typeof window != undefined) {
+                window.localStorage.setItem('carts', JSON.stringify(updatedData));
+            }
         } else {
             const data = [...products, { ...product, quantity: 1 }];
-            localStorage.setItem('carts', JSON.stringify(data));
+            if (typeof window != undefined) {
+                window.localStorage.setItem('carts', JSON.stringify(data));
+            }
         }
         toast('Product added to your bag!!');
     };
